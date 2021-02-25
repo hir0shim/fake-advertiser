@@ -1,0 +1,18 @@
+<html>
+    <script>
+    var handler;
+    const conv=() => {
+        clearTimeout(handler);
+        const xhr = new XMLHttpRequest(); 
+        const item = document.getElementById("conversion-item").value;
+        xhr.open("POST", 'https://1svkujd1fk.execute-api.us-east-2.amazonaws.com/conversion', true); 
+        xhr.withCredentials = true; 
+        xhr.send(`item=${item}`); 
+        document.getElementById("msg").innerText = 'sent!';
+        handler = setTimeout(() => { document.getElementById("msg").innerText = '';}, 1000)
+    }
+    </script>
+    Welcome to advertiser website!<br /> 
+    <input type="text" id="conversion-item" value="item-123"></input><button id="conversion-button" onclick='conv()'>make a conversion</button><br />
+    <p id="msg"></p>
+</html>
